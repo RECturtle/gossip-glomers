@@ -30,13 +30,13 @@ type TopologyMessage struct {
 	Topology map[string][]string `json:"topology"`
 }
 
-type Broadcaster struct {
+type BroadcastMessage struct {
 	Type    string `json:"type"`
 	Message int    `json:"message"`
 }
 
 func (m *MaelNode) broadcastHandler(msg maelstrom.Message) error {
-	var body Broadcaster
+	var body BroadcastMessage
 	if err := json.Unmarshal(msg.Body, &body); err != nil {
 		return err
 	}
